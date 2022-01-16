@@ -1,0 +1,28 @@
+.block1 { 
+    width: 300px; 
+    background: #dda;  
+    border: solid 1px black; 
+    float: left; 
+    position: relative; 
+    top: 20px; 
+    left: 20px; 
+}
+.block2 { 
+    width: 300px; 
+    background: #ccc; 
+    border: solid 1px black;
+    float: left; 
+    position: relative; 
+    top: 20px; 
+    left: 40px;
+}
+.block3 { 
+    width: 300px; 
+    background: #abd;  
+    border: solid 1px black; 
+    float: left; 
+    position: relative; 
+    top: 20px; 
+    left: 60px; 
+}
+

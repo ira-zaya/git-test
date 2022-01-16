@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=cp1251" />
+	<title>Калькулятор</title>
+ <style>
+   * {
+    margin: 0;
+    padding: 0;
+   }
+  </style>
+ <link href="styles.css" rel="stylesheet" type="text/css">
+</head>
+<body bgcolor="red">
+
+
+	
+<div class="block1">
+<p><b>Определение сопротивления по цветовой маркировке</b></p>
+<img src="resistor2.png" alt="Маркировка">
+<table>
+  <tr width>
+    <td width="25" bgcolor="brown"><input name="r1" type="radio" value="10"></td>
+    <td width="25" bgcolor="black"><input name="r2" type="radio" value="0"></td>
+    <td width="25" bgcolor="silver"><input name="r3" type="radio" value="0.01"></td>
+    <td width="25" bgcolor="silver"><input name="r4" type="radio" value="10"></td>
+  </tr>
+  <tr>
+    <td bgcolor="red"><input name="r1" type="radio" value="20"></td>
+    <td bgcolor="brown"><input name="r2" type="radio" value="1"></td>
+    <td bgcolor="gold"><input name="r3" type="radio" value="0.1"></td>
+    <td bgcolor="gold"><input name="r4" type="radio" value="5"></td>
+  </tr>
+    <tr>
+    <td bgcolor="orange"><input name="r1" type="radio" value="30"></td>
+    <td bgcolor="red"><input name="r2" type="radio" value="2"></td>
+    <td bgcolor="black"><input name="r3" type="radio" value="1"></td>
+    <td bgcolor="brown"><input name="r4" type="radio" value="1"></td>
+  </tr>
+    <tr>
+    <td bgcolor="yellow"><input name="r1" type="radio" value="40"></td>
+    <td bgcolor="orange"><input name="r2" type="radio" value="3"></td>
+    <td bgcolor="brown"><input name="r3" type="radio" value="10"></td>
+    <td bgcolor="red"><input name="r4" type="radio" value="2"></td>
+  </tr>
+    <tr>
+    <td bgcolor="green"><input name="r1" type="radio" value="50"></td>
+    <td bgcolor="yellow"><input name="r2" type="radio" value="4"></td>
+    <td bgcolor="red"><input name="r3" type="radio" value="100"></td>
+    <td bgcolor="green"><input name="r4" type="radio" value="0.5"></td>
+  </tr>
+    <tr>
+    <td bgcolor="royalblue"><input name="r1" type="radio" value="60"></td>
+    <td bgcolor="green"><input name="r2" type="radio" value="5"></td>
+    <td bgcolor="orange"><input name="r3" type="radio" value="1000"></td>
+    <td bgcolor="royalblue"><input name="r4" type="radio" value="0.25"></td>
+  </tr>
+    <tr>
+    <td bgcolor="purple"><input name="r1" type="radio" value="70"></td>
+    <td bgcolor="royalblue"><input name="r2" type="radio" value="6"></td>
+    <td bgcolor="yellow"><input name="r3" type="radio" value="10000"></td>
+    <td bgcolor="purple"><input name="r4" type="radio" value="0.1"></td>
+  </tr>
+    <tr>
+    <td bgcolor="grey"><input name="r1" type="radio" value="80"></td>
+    <td bgcolor="purple"><input name="r2" type="radio" value="7"></td>
+    <td bgcolor="green"><input name="r3" type="radio" value="100000"></td>
+    <td bgcolor="grey"><input name="r4" type="radio" value="0.05"></td>
+  </tr>
+    <tr>
+    <td bgcolor="white"><input name="r1" type="radio" value="90"></td>
+    <td bgcolor="grey"><input name="r2" type="radio" value="8"></td>
+    <td bgcolor="royalblue"><input name="r3" type="radio" value="1000000"></td>
+    <td></td>
+  </tr>
+    <tr>
+    <td></td>
+    <td bgcolor="white"><input name="r2" type="radio" value="9"></td>
+    <td bgcolor="purple"><input name="r3" type="radio" value="10000000"></td>
+    <td></td>
+  </tr>
+    <tr>
+    <td></td>
+    <td></td>
+    <td bgcolor="grey"><input name="r3" type="radio" value="100000000"></td>
+    <td></td>
+  </tr>
+    <tr>
+    <td></td>
+    <td></td>
+    <td bgcolor="white"><input name="r3" type="radio" value="1000000000"></td>
+    <td></td>
+  </tr>
+</table>
+<button onclick="fun2()">Вычислить сопротивление</button>
+<h3><p id="value">_</h3>
+</div>
+
+<div class="block2">
+<p><b>Расчет токоограничивающего резистора</b></p>
+<img src="diode.png" alt="Диод с резистором">
+  <p>Напряжение источника питания</p>
+	<input id="num1" /> (Вольт)
+
+  <p>Ток через светодиод</p>
+	<input id="num2" /> (Милиампер)
+  <p>
+	<button onclick="fun1()">Посчитать</button>
+	<h3><p id="resistance">_</h3>
+</div>
+
+
+<div class="block3">
+<p><b>Расчет напряжения на выходе делителя</b></p>
+<img src="divider.png" alt="Делитель напряжения">
+<p>Напряжение источника питания</p>
+	<input id="inp1" /> (Вольт)
+  <p>Сопротивление R1</p>
+	<input id="inp2" /> (Ом)
+ <p>Сопротивление R2</p>
+	<input id="inp3" /> (Ом)
+  <p>
+	<button onclick="fun3()">Посчитать</button>
+	<h3><p id="voltage">_</h3>
+</div>
+
+<script>
+	  
+ // функция расчёта сопротивления для светодиода
+ function fun1() {
+   var result;
+   var num1 = Number(document.getElementById("num1").value);
+   var num2 = Number(document.getElementById("num2").value);
+   result = Math.round(num1 / num2 *1000);
+   document.getElementById("resistance").innerHTML = result+" Ом";
+  }
+     
+     function fun2() {
+  var rad1=document.getElementsByName('r1');
+  var rad2=document.getElementsByName('r2');
+  var rad3=document.getElementsByName('r3');
+  var rad4=document.getElementsByName('r4');
+  result=0;
+  accuracy=10;
+  for (var i=0;i<rad1.length; i++) {
+    if (rad1[i].checked) {
+      res1=Number(rad1[i].value);
+    }
+  }
+  
+  for (var i=0;i<rad2.length; i++) {
+    if (rad2[i].checked) {
+      res2=Number(rad2[i].value);
+    }
+  }
+  
+  for (var i=0;i<rad3.length; i++) {
+    if (rad3[i].checked) {
+      res3=Number(rad3[i].value);
+    }
+  }
+  for (var i=0;i<rad4.length; i++) {
+    if (rad4[i].checked) {
+      accuracy=Number(rad4[i].value);
+    }
+  }
+  result=(res1+res2)*res3
+//document.getElementById("value").innerHTML = result+" Ом  "+accuracy+"%";
+
+if ((result > 999)&&(result < 1000000)){
+result=result/1000;
+document.getElementById("value").innerHTML = result+" КОм  "+accuracy+"%";
+}
+else if (result>999999){
+result=result/1000000;
+  document.getElementById("value").innerHTML = result+" МОм  "+accuracy+"%";
+}
+else{
+  document.getElementById("value").innerHTML = result+" Ом  "+accuracy+"%";
+}
+}
+
+function fun3() {
+   var result;
+   var num1 = Number(document.getElementById("inp1").value);
+   var num2 = Number(document.getElementById("inp2").value);
+   var num3 = Number(document.getElementById("inp3").value);
+   result = num1*num3/(num2+num3);
+   result = result.toFixed(4)
+   document.getElementById("voltage").innerHTML = result+" V";
+  }
+</script>
+ 
+</body>
+</html>
