@@ -1,5 +1,4 @@
 #!/bin/bash
-set -e
 
 # set username and password
 UNAME="bohdan1993"
